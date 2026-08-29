@@ -1,0 +1,227 @@
+/**
+ * Air Group — База данных каталога, цен, контактов и настроек.
+ */
+
+const AIR_GROUP_CONFIG = {
+  company: {
+    name: "Air Group",
+    tagline: "Телевизоры TCL в Дагестане по оптовым ценам",
+    phone: "+79645714606",
+    phoneDisplay: "+7 (964) 571-46-06",
+    whatsapp: "79645714606",
+    telegram: "Bagistr",
+    telegramUrl: "https://t.me/Bagistr"
+  },
+
+  locations: {
+    kaspiysk: {
+      title: "Основной склад в Каспийске",
+      city: "г. Каспийск",
+      address: "ул. Молодёжная, 2",
+      fullAddress: "Республика Дагестан, г. Каспийск, ул. Молодёжная, 2",
+      schedule: "Ежедневно с 10:00 до 18:00",
+      description: "Основной склад и пункт выдачи. Большой выбор в наличии. Проверка экрана перед оплатой."
+    },
+    izberbash: {
+      title: "Магазин-партнёр «Медиаград»",
+      city: "г. Избербаш",
+      address: "ул. Буйнакского, 113",
+      fullAddress: "Республика Дагестан, г. Избербаш, ул. Буйнакского, 113",
+      schedule: "Ежедневно с 09:30 до 19:00",
+      description: "Магазин-партнёр для самовывоза в Избербаше. Наличие конкретных моделей уточняйте заранее."
+    }
+  },
+
+  delivery: {
+    terms: "Оплата курьеру строго после распаковки коробки и полной проверки экрана на битые пиксели!",
+    cities: [
+      { name: "Каспийск", time: "В день заказа", price: "Бесплатно при согласовании" },
+      { name: "Махачкала", time: "В день заказа", price: "Бесплатно при согласовании" },
+      { name: "Избербаш", time: "В день заказа / 1 день", price: "Самовывоз или курьер" },
+      { name: "Дербент", time: "1–2 дня", price: "По тарифу курьера" },
+      { name: "Хасавюрт", time: "1–2 дня", price: "По тарифу курьера" },
+      { name: "Буйнакск, Кизилюрт и районы", time: "1–2 дня", price: "По тарифу курьера" }
+    ]
+  },
+
+  customOrderRules: {
+    discountPercent: 5,
+    deliveryDays: "7-10 дней",
+    prepaymentPercent: 30,
+    terms: "Если вам нужна редкая диагональ или модель, которой нет в наличии на складе в Каспийске, мы привезем её напрямую из Москвы со скидкой 5% за ожидание. Предоплата 30% при заказе, а остаток 70% — только после распаковки и проверки экрана!"
+  },
+
+  // Каталог моделей телевизоров TCL
+  products: [
+    {
+      id: "tcl-43p635",
+      name: "Телевизор TCL 43P635 43\" 4K HDR Smart TV",
+      shortName: "TCL 43P635 (43\")",
+      series: "P-Series",
+      diagonal: 43,
+      diagonalStr: "43\" (108 см)",
+      resolution: "4K Ultra HD (3840x2160)",
+      tech: "4K HDR",
+      screenType: "VA Direct LED",
+      refreshRate: "60 Гц",
+      os: "Google TV (Android)",
+      sound: "20 Вт (Dolby Audio)",
+      hdr: "HDR10, HLG",
+      ports: "3x HDMI 2.1, 1x USB 2.0, Wi-Fi 5GHz, Bluetooth 5.0",
+      price: 24900,
+      oldPrice: 29990,
+      inStockKaspiysk: true,
+      inStockIzberbash: true,
+      isCustomOrder: false,
+      isBestseller: true,
+      image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80",
+      description: "Хит продаж в спальню и гостиную. Быстрый Google TV, четкое 4K разрешение, сочные цвета и официальная гарантия 12 месяцев."
+    },
+    {
+      id: "tcl-50p735",
+      name: "Телевизор TCL 50P735 50\" 4K Wide Color Gamut",
+      shortName: "TCL 50P735 (50\")",
+      series: "P-Series WCG",
+      diagonal: 50,
+      diagonalStr: "50\" (127 см)",
+      resolution: "4K Ultra HD (3840x2160)",
+      tech: "4K HDR / WCG",
+      screenType: "Безрамочный VA",
+      refreshRate: "60 Гц (MEMC)",
+      os: "Google TV",
+      sound: "20 Вт (Dolby Atmos)",
+      hdr: "Dolby Vision, HDR10",
+      ports: "3x HDMI 2.1, 2x USB, Wi-Fi 5G, Bluetooth",
+      price: 32500,
+      oldPrice: 38990,
+      inStockKaspiysk: true,
+      inStockIzberbash: true,
+      isCustomOrder: false,
+      isBestseller: true,
+      image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80",
+      description: "Идеальный баланс размера и цены. Расширенная цветовая гамма Wide Color Gamut и поддержка Dolby Vision."
+    },
+    {
+      id: "tcl-55c645",
+      name: "Телевизор TCL 55C645 55\" QLED 4K Smart TV",
+      shortName: "TCL 55C645 (55\" QLED)",
+      series: "C-Series QLED",
+      diagonal: 55,
+      diagonalStr: "55\" (139 см)",
+      resolution: "4K Ultra HD (3840x2160)",
+      tech: "QLED (Квантовые точки)",
+      screenType: "Quantum Dot QLED",
+      refreshRate: "60 Гц (120 Гц DLG Game)",
+      os: "Google TV",
+      sound: "20 Вт (ONKYO Sound / Dolby Atmos)",
+      hdr: "Dolby Vision, HDR10+, HLG",
+      ports: "3x HDMI 2.1 (eARC, ALLM), USB 3.0, Wi-Fi 5G",
+      price: 43900,
+      oldPrice: 52990,
+      inStockKaspiysk: true,
+      inStockIzberbash: false,
+      isCustomOrder: false,
+      isBestseller: true,
+      image: "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=800&q=80",
+      description: "Хит продаж в категории QLED. Квантовые точки, миллиард цветов, игровой режим 120Hz для PlayStation 5 / Xbox и звук ONKYO."
+    },
+    {
+      id: "tcl-65c745",
+      name: "Телевизор TCL 65C745 65\" QLED 144Hz Gaming TV",
+      shortName: "TCL 65C745 (65\" 144Hz)",
+      series: "C-Series Game Master",
+      diagonal: 65,
+      diagonalStr: "65\" (165 см)",
+      resolution: "4K Ultra HD (3840x2160)",
+      tech: "QLED + Full Array Dimming",
+      screenType: "QLED 144Hz VRR",
+      refreshRate: "144 Гц честные (VRR, FreeSync)",
+      os: "Google TV",
+      sound: "30 Вт (Сабвуфер + Dolby Atmos)",
+      hdr: "Dolby Vision IQ, HDR 1000 нит",
+      ports: "4x HDMI 2.1 (4K@144Hz), USB 3.0, Wi-Fi 5G",
+      price: 69900,
+      oldPrice: 84990,
+      inStockKaspiysk: true,
+      inStockIzberbash: false,
+      isCustomOrder: false,
+      isBestseller: true,
+      image: "https://images.unsplash.com/photo-1577979749830-f1d742b96791?auto=format&fit=crop&w=800&q=80",
+      description: "Флагман 65 дюймов с прямой подсветкой Full Array Local Dimming, пиковой яркостью 1000 нит и сверхплавной матрицей 144 Гц."
+    },
+    {
+      id: "tcl-75c845",
+      name: "Телевизор TCL 75C845 75\" Mini-LED 4K 144Hz",
+      shortName: "TCL 75C845 (75\" Mini-LED)",
+      series: "C-Series Mini-LED",
+      diagonal: 75,
+      diagonalStr: "75\" (190 см)",
+      resolution: "4K Ultra HD (3840x2160)",
+      tech: "Mini-LED + QLED",
+      screenType: "Mini-LED 2000 нит",
+      refreshRate: "144 Гц",
+      os: "Google TV",
+      sound: "60 Вт 2.1 ONKYO со встроенным сабвуфером",
+      hdr: "Dolby Vision IQ, IMAX Enhanced",
+      ports: "4x HDMI 2.1, 2x USB, Wi-Fi 6",
+      price: 129000,
+      oldPrice: 154990,
+      inStockKaspiysk: true,
+      inStockIzberbash: false,
+      isCustomOrder: false,
+      isBestseller: true,
+      image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80",
+      description: "Премиальный кинотеатр на базе технологии Mini-LED. Глубокий черный цвет, 2000 нит яркости и акустика ONKYO 2.1."
+    },
+    {
+      id: "tcl-85p745",
+      name: "Телевизор TCL 85P745 85\" 4K HDR Giant Screen",
+      shortName: "TCL 85P745 (85\" Гигант)",
+      series: "P-Series Giant Screen",
+      diagonal: 85,
+      diagonalStr: "85\" (215 см)",
+      resolution: "4K Ultra HD (3840x2160)",
+      tech: "4K HDR",
+      screenType: "VA 120Hz DLG",
+      refreshRate: "120 Гц DLG",
+      os: "Google TV",
+      sound: "30 Вт (Dolby Atmos)",
+      hdr: "Dolby Vision, HDR10",
+      ports: "3x HDMI 2.1, 2x USB, Wi-Fi 5G",
+      price: 119000,
+      oldPrice: 139990,
+      inStockKaspiysk: false,
+      inStockIzberbash: false,
+      isCustomOrder: true,
+      customDiscountPrice: 113050, // 5% скидка под заказ
+      isBestseller: false,
+      image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80",
+      description: "Огромный 85-дюймовый экран для больших гостиных и залов. Привезем из Москвы за 7–10 дней со скидкой 5% по предоплате 30%."
+    },
+    {
+      id: "tcl-98c735",
+      name: "Телевизор TCL 98C735 98\" 120Hz QLED Cinema",
+      shortName: "TCL 98C735 (98\" Кинозал)",
+      series: "C-Series Giant Cinema",
+      diagonal: 98,
+      diagonalStr: "98\" (248 см)",
+      resolution: "4K Ultra HD (3840x2160)",
+      tech: "QLED 120Hz",
+      screenType: "Quantum Dot QLED",
+      refreshRate: "120 Гц VRR",
+      os: "Google TV",
+      sound: "60 Вт ONKYO 2.1",
+      hdr: "Dolby Vision IQ, HDR10+",
+      ports: "4x HDMI 2.1, 2x USB, Wi-Fi 6",
+      price: 249000,
+      oldPrice: 299000,
+      inStockKaspiysk: false,
+      inStockIzberbash: false,
+      isCustomOrder: true,
+      customDiscountPrice: 236550, // 5% скидка под заказ
+      isBestseller: false,
+      image: "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=800&q=80",
+      description: "Максимальный размер для особняков, премиальных ресторанов и кинозалов. Прямой привоз из Москвы со скидкой 5%."
+    }
+  ]
+};
